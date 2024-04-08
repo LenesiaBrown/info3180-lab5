@@ -1,23 +1,25 @@
-<template>
-    <div v-if="success">{{ success }}</div>
-    <div v-if="errors">{{ errors }}</div>
-    
-    <h1>Add New Movie</h1>
-    <form id="movieForm" @submit.prevent="saveMovie">        
-        <div class="form-group">
-            <label for="title" class="form-label">Movie Title</label>
-            <input v-model="title" type="text" id="title" class="form-control"/>
-        </div>
-        <div class="form-group">
-            <label for="description" class="form-label">Summary</label>
-            <textarea v-model="description" id="description" class="form-control"></textarea>
-        </div>
-        <div class="form-group">
-            <label for="poster" class="form-label">Poster</label>
-            <input type="file" @change="onFileChange" id="poster" class="form-control-file"/>
-        </div>
-        <button type="submit" class="button-add-movie">Submit</button>
-    </form>
+<template>    
+    <div class="movie_form">
+        <h1>Add New Movie</h1>
+        <div v-if="success">{{ success }}</div>
+        <div v-if="errors">{{ errors }}</div>
+        <form id="movieForm" @submit.prevent="saveMovie">        
+            <div class="form-group">
+                <label for="title" class="form-label">Movie Title</label>
+                <input v-model="title" type="text" id="title" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <label for="description" class="form-label">Summary</label>
+                <textarea v-model="description" id="description" class="form-control"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="poster" class="form-label">Poster</label>
+                <br>
+                <input type="file" @change="onFileChange" id="poster" class="form-control-file"/>
+            </div>
+            <button type="submit" class="button-add-movie">Submit</button>
+        </form>
+    </div>
 </template>
 
 
@@ -89,6 +91,25 @@ const onFileChange = (event) => {
 // onMounted(() => {
 //     getCsrfToken();
 // });
-
-
 </script>
+
+
+<style scoped>
+.button-add-movie {
+    background-color: #007bff;
+    color: white; 
+    padding: 8px 10px; 
+    border: none;
+    border-radius: 5px; 
+    cursor: pointer; 
+    margin-top: 20px;
+}
+
+.button-add-movie:hover {
+    background-color: #0056b3;
+}
+
+.movie_form {
+    margin-left: 30px;
+}
+</style>

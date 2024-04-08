@@ -23,6 +23,9 @@
               <RouterLink class="nav-link" to="/about">About</RouterLink>
             </li>
             <li class="nav-item">
+              <RouterLink to="/movies" class="nav-link movies">Movies</RouterLink>
+            </li>
+            <li class="nav-item">
               <RouterLink to="/movies/create" class="nav-link movie">Add Movie</RouterLink>
             </li>
           </ul>

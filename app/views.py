@@ -47,6 +47,27 @@ def movies():
         errors = form_errors(myform)
         return jsonify({"errors": errors}), 400
     
+
+@app.route('/api/v1/movies', methods=['GET'])
+def display_movies():
+    movie = Movie.query.all()
+    list_movie = []
+    for m in movie:
+        movie_data = {
+            'id': m.id,
+            'title': m.title,
+            'description': m.description,
+            'poster': m.poster
+        }
+        list_movie.append(movie_data)
+    return jsonify({'movies': list_movie})
+
+
+@app.route('/api/v1/posters/<filename>', methods=['GET'])
+def poster_image(file):
+    return send_from_directory(app.config['UPLOAD_FOLDER'], file)
+
+    
 @app.route('/api/v1/csrf-token', methods=['GET'])
 def get_csrf():
     return jsonify({'csrf_token': generate_csrf()})
